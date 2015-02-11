@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -35,6 +37,20 @@ public class MainActivity extends Activity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.more_info:
+                MoreInfoDialogFragment moreInfoDialogFragment = MoreInfoDialogFragment.getInstance();
+                moreInfoDialogFragment.show(getFragmentManager(), "MoreInfoDialogFragment");
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     /**
